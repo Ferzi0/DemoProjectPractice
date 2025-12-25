@@ -2,26 +2,30 @@
 
 namespace Database\Seeders;
 
+use App\Models\Status;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Status::create(['title' => 'Новая']);
+        Status::create(['title' => 'В процессе']);
+        Status::create(['title' => 'Завершена']);
+        Status::create(['title' => 'Отменена']);
 
-        User::firstOrCreate(
-            ['email' => 'test@example.com'],
-            [
-                'name' => 'Test User',
-                'password' => 'password',
-                'email_verified_at' => now(),
-            ]
-        );
+        User::create([
+            'firstname' => 'Admin',
+            'middlename' => 'Admin',
+            'lastname' => 'Admin',
+            'email' => 'admin@example.com',
+            'login' => 'administrator',
+            'password' => Hash::make('administrator'),
+            'firstname' => '+79999999999',
+            'role' => 'admin',
+        ]);
     }
 }

@@ -77,7 +77,7 @@ class User extends Authenticatable
         return "{$this->lastname} {$this->firstname} {$this->middlename}";
     }
 
-    public function idAdmin(): bool
+    public function isAdmin(): bool
     {
         return $this->role === 'admin';
     }
